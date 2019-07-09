@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template: repeat(auto-fill, 5rem)/ repeat(8, 1fr);
+}
+
+.logo {
+  font-style: italic;
+  text-shadow: 2px 2px 2px purple;
+}
+
+#welcome {
+  grid-column: 2/6;
+  grid-row: 2/3;
+}
