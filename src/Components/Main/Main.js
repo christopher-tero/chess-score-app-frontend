@@ -3,7 +3,7 @@ import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import TopPlayerList from '../TopPlayerList/TopPlayerList'
 import './Main.css';
-const url = "https://secret-beyond-89883.herokuapp.com/"
+const url = "https://chess-score-app-backend.herokuapp.com/"
 
 export default class Main extends Component {
   constructor() {
