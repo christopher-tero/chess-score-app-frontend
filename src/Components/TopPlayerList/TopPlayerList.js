@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PlayerList(props) {
+export default function TopPlayerList(props) {
   const listPlayers = props.players.map((player) => {
     console.log(player.player_name)
     return (

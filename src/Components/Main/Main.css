@@ -1,6 +1,16 @@
+button {
+  grid-column: 3/5;
+  font-size: 14pt;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px #777;
+  border: 1px outset #EEE;
+  background-color: #EEE;
+}
+
 .container {
   display: grid;
-  grid-template: repeat(auto-fill, 5rem)/ repeat(8, 1fr);
+  grid-template: repeat(10, 4rem)/ repeat(9, 1fr);
 }
 
 .logo {
@@ -8,7 +18,29 @@
   text-shadow: 2px 2px 2px purple;
 }
 
+.sidebar-stats {
+  text-align: center;
+  grid-row: 4/9;
+  grid-column: 6/8;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #777, -2px 2px 2px #777;
+  border: 2px outset #DDD;
+  background-color: #EEE;
+  font-size: 14pt;
+
+}
+
 #welcome {
-  grid-column: 2/6;
-  grid-row: 2/3;
+  grid-column: 3/8;
+  text-align: center;
+  grid-row: 2/4;
+  margin-top: 3rem;
+}
+
+#single-game-button {
+    grid-row-start: 4;
+}
+
+#tournament-button {
+    grid-row-start: 5;
 }
