@@ -1,16 +1,18 @@
 import React from 'react'
+import './TopPlayerList.css'
 
 export default function TopPlayerList(props) {
-  const listPlayers = props.players.map((player) => {
-    console.log(player.player_name)
+  const sortPlayers = props.players.sort((a, b) => (a.rating > b.rating) ? 1 : -1)
+
+  const listPlayers = sortPlayers.slice(0, 5).map((player) => {
     return (
-      <li>{player.player_name}</li>
+      <li>{player.player_name} - {player.rating}</li>
     )
   })
 
   return(
-    <ul>
+    <ol>
       {listPlayers}
-    </ul>
+    </ol>
   )
 }

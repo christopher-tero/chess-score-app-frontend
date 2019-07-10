@@ -1,16 +1,11 @@
-button {
+.main-button {
   grid-column: 3/5;
   font-size: 14pt;
-  margin: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 10px;
   box-shadow: 4px 4px 4px #777;
   border: 1px outset #EEE;
   background-color: #EEE;
-}
-
-.container {
-  display: grid;
-  grid-template: repeat(10, 4rem)/ repeat(9, 1fr);
 }
 
 .logo {

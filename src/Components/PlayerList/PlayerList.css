@@ -1,0 +1,28 @@
+#title-players {
+  grid-row-start: 2;
+  grid-column: 4/7;
+  text-align: center;
+}
+
+#new-player {
+  grid-row-start: 8;
+  grid-column: 3/8;
+}
+
+.list-items {
+  display: grid;
+  grid-template-columns: repeat(4 / 1fr)
+}
+
+.modify-buttons {
+  grid-column-start: 4;
+}
+
+h5 {
+  margin: 3rem 0 0 0;
+}
+
+ul {
+  grid-row-start: 3;
+  grid-column: 3/8;
+}

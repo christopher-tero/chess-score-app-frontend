@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import Navbar from '../Navbar/Navbar'
-import Footer from '../Footer/Footer'
 import TopPlayerList from '../TopPlayerList/TopPlayerList'
 import './Main.css';
 const url = "https://chess-score-app-backend.herokuapp.com/"
@@ -20,26 +18,27 @@ export default class Main extends Component {
       .then(result => this.setState({players: result}))
   }
 
-  topPlayerList = () => {
-    console.log(this.state.players)
-  }
-
   render(){
     return(
       <div className="container">
-        <Navbar />
+
         <h1 id="welcome">Welcome to <span className="logo">ScoreIt!</span> Chess!</h1>
-        <button id="single-game-button">Single Game</button>
-        <button id="tournament-button">Tournament</button>
+          <button className="main-button" id="single-game-button">
+            <a href="/new-game/">Single Game</a>
+          </button>
+          <button className="main-button" id="tournament-button">
+            <a href="/new-tournament/">Tournament</a>
+          </button>
         <div className="sidebar-stats">
-          <p>List of top Players</p>
+          <h5>List of Top Players</h5>
           {this.state.players
             ? <TopPlayerList players={this.state.players}/>
             : ""
           }
         </div>
-        <Footer />
       </div>
     )
   }
 }
+
+// render={(props) => <TodoForm {...props} postTodo={this.postTodos}
