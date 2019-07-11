@@ -5,7 +5,7 @@ export default function Games(props) {
 
   return (
     <li>
-      {props.date}
+      {props.date}: Christopher (W-1) vs. David (B-0)
     </li>
   )
 }

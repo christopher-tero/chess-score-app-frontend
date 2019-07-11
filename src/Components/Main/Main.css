@@ -3,24 +3,27 @@
   font-size: 14pt;
   margin-bottom: 1rem;
   border-radius: 10px;
-  box-shadow: 4px 4px 4px #777;
+  box-shadow: 4px 4px 4px #5555;
   border: 1px outset #EEE;
-  background-color: #EEE;
+  background-color: #EEEB;
 }
 
 .logo {
+  font-family: serif;
   font-style: italic;
-  text-shadow: 2px 2px 2px purple;
+  text-shadow: 2px 2px 2px blue;
 }
 
 .sidebar-stats {
   text-align: center;
+  color: #212;
+  text-shadow: none;
   grid-row: 4/9;
   grid-column: 6/8;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px #777, -2px 2px 2px #777;
-  border: 2px outset #DDD;
-  background-color: #EEE;
+  box-shadow: 4px 4px 2px #5555, -4px 4px 2px #5555;
+  border: 2px outset #DDDA;
+  background-color: #EEEC;
   font-size: 14pt;
 
 }

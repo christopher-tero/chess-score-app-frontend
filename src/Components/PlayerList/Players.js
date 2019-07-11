@@ -9,9 +9,9 @@ export default function Players(props) {
 
   return (
     <li className="list-items">
-      {props.name} - {props.rating}
+      <span className="entry">{props.name} - {props.rating}</span>
       <span className="modify-buttons">
-        <button className="edit-delete-button" onClick={handleEdit}>Edit</button>
+        <button className="edit-delete-button" onClick={props.editClick}>Edit</button>
         <button className="edit-delete-button" onClick={props.onClick}>Delete</button>
       </span>
     </li>

@@ -18,6 +18,8 @@ export default class GameHistoryList extends Component {
             : ""
           }
         </ul>
+        <p className="under-construction">This Page is Under Construction</p>
+        <button className="home" onClick={() => this.props.history.push('/')}>Home</button>
       </div>
     )
   }

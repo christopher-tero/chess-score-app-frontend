@@ -8,25 +8,26 @@ export default class SingleGame extends Component {
 
     this.state = {
       playGame: {
+        date: undefined,
         white: undefined,
         black: undefined,
         winner: undefined,
       },
       postPlayerOneGame: {
-        player_id: undefined,
-        game_id: undefined,
+        player: undefined,
+        game: undefined,
         score: undefined,
       },
       postPlayerTwoGame: {
-        player_id: undefined,
-        game_id: undefined,
+        player: undefined,
+        game: undefined,
         score: undefined,
       }
     }
   }
 
   postGames = (newGame) => {
-    fetch(url + "games", {
+    fetch(url + "player_games", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -48,36 +49,38 @@ export default class SingleGame extends Component {
     let postPlayerOneGameData = JSON.parse(JSON.stringify(this.state.postPlayerOneGame))
     let postPlayerTwoGameData = JSON.parse(JSON.stringify(this.state.postPlayerTwoGame))
     if (this.state.playGame.winner === "white") {
-      postPlayerOneGameData.player_id = this.state.playGame.white
-      postPlayerOneGameData.game_id = gameId
+      postPlayerOneGameData.player = this.state.playGame.white
+      postPlayerOneGameData.game = gameId
       postPlayerOneGameData.score = 1
-      this.setState({postGame: postPlayerOneGameData})
-      postPlayerTwoGameData.player_id = this.state.playGame.black
-      postPlayerTwoGameData.game_id = gameId
+      this.setState({postPlayerOneGame: postPlayerOneGameData})
+      postPlayerTwoGameData.player = this.state.playGame.black
+      postPlayerTwoGameData.game = gameId
       postPlayerTwoGameData.score = 0
-      this.setState({postGame: postPlayerTwoGameData })
+      this.setState({postPlayerTwoGame: postPlayerTwoGameData })
     } else if (this.state.playGame.winner === "black") {
-      postPlayerOneGameData.player_id = this.state.playGame.white
-      postPlayerOneGameData.game_id = gameId
+      postPlayerOneGameData.player = this.state.playGame.white
+      postPlayerOneGameData.game = gameId
       postPlayerOneGameData.score = 0
-      this.setState({postGame: postPlayerOneGameData})
-      postPlayerTwoGameData.player_id = this.state.playGame.black
-      postPlayerTwoGameData.game_id = gameId
+      this.setState({postPlayerOneGame: postPlayerOneGameData})
+      postPlayerTwoGameData.player = this.state.playGame.black
+      postPlayerTwoGameData.game = gameId
       postPlayerTwoGameData.score = 1
-      this.setState({postGame: postPlayerTwoGameData })
+      this.setState({postPlayerTwoGame: postPlayerTwoGameData })
     } else if (this.state.playGame.winner === "draw") {
-      postPlayerOneGameData.player_id = this.state.playGame.white
-      postPlayerOneGameData.game_id = gameId
+      postPlayerOneGameData.player = this.state.playGame.white
+      postPlayerOneGameData.game = gameId
       postPlayerOneGameData.score = 0.5
-      this.setState({postGame: postPlayerOneGameData})
-      postPlayerTwoGameData.player_id = this.state.playGame.black
-      postPlayerTwoGameData.game_id = gameId
+      this.setState({postPlayerOneGame: postPlayerOneGameData})
+      postPlayerTwoGameData.player = this.state.playGame.black
+      postPlayerTwoGameData.game = gameId
       postPlayerTwoGameData.score = 0.5
-      this.setState({postGame: postPlayerTwoGameData })
+      this.setState({postPlayerTwoGame: postPlayerTwoGameData })
     }
-    const newGame = {date: Date.now(), tournament_id: null}
-    this.postGames(newGame)
-    console.log(newGame)
+    // if (this.state.postPlayerOneGame) {
+    //   return this.postGames(postPlayerOneGameData)
+    // } else return ""
+    window.alert("Minor problem posting; check console log to see all passed info")
+    return this.props.history.push('/');
   }
 
   handleInputChange = (event) => {

@@ -18,16 +18,24 @@ export default class Main extends Component {
       .then(result => this.setState({players: result}))
   }
 
+  singleGamePath = () => {
+    return this.props.history.push('/new-game/');
+  }
+
+  tournamentPath = () => {
+        return this.props.history.push('/new-tournament/');
+  }
+
   render(){
     return(
       <div className="container">
 
         <h1 id="welcome">Welcome to <span className="logo">ScoreIt!</span> Chess!</h1>
-          <button className="main-button" id="single-game-button">
-            <a href="/new-game/">Single Game</a>
+          <button className="main-button" id="single-game-button" onClick={this.singleGamePath}>
+            New Game
           </button>
-          <button className="main-button" id="tournament-button">
-            <a href="/new-tournament/">Tournament</a>
+          <button className="main-button" id="tournament-button" onClick={this.tournamentPath}>
+            Tournament
           </button>
         <div className="sidebar-stats">
           <h5>List of Top Players</h5>

@@ -9,6 +9,11 @@
   grid-column: 3/8;
 }
 
+#edit-player {
+  grid-row-start: 7;
+  grid-column: 3/8;
+}
+
 .list-items {
   display: grid;
   grid-template-columns: repeat(4 / 1fr)
@@ -16,6 +21,10 @@
 
 .modify-buttons {
   grid-column-start: 4;
+}
+
+.entry {
+  grid-column: 1/3;
 }
 
 h5 {

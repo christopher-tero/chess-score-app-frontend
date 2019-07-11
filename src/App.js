@@ -16,14 +16,23 @@ export default class App extends Component {
 
     this.state = {
       players:undefined,
+      tournaments: undefined,
       games: [{id: 1, date: "1-1-11"}, {id: 2, date: "1-2-11"}],
+      editedPlayer: {},
     }
   }
 
   componentDidMount = () => {
+    this.fetchData()
+  }
+
+  fetchData = () => {
     fetch(url + "players")
       .then(response => response.json())
       .then(result => this.setState({players: result}))
+    fetch(url + "tournaments")
+      .then(response => response.json())
+      .then(result => this.setState({tournaments: result}))
     fetch(url + "games")
       .then(response => response.json())
       .then(result => this.setState({games: result}))
@@ -38,7 +47,24 @@ export default class App extends Component {
       body: JSON.stringify(newPlayer)
     })
       .then(response => response.json())
-      .then(result => this.setState({players: result}))
+      .then(this.fetchData)
+  }
+
+  editPerson = (editPlayer, id) => {
+    fetch(url + "players/" + id, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(editPlayer)
+    })
+      .then(response => response.json())
+      .then(this.fetchData)
+  }
+
+  setEditedPlayer = (player) => {
+    this.state.editedPlayer = player
+    console.log(player)
   }
 
   deletePerson = (id) => {
@@ -61,7 +87,7 @@ export default class App extends Component {
         </nav>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Route path="/players/" component={(props) => <PlayerList {...props} players={this.state.players} delete={this.deletePerson} addPerson={this.addPerson}/>} />
+          <Route path="/players/" component={(props) => <PlayerList {...props} players={this.state.players} delete={this.deletePerson} addPerson={this.addPerson} setEditedPlayer={this.setEditedPlayer}/>} editedPlayer={this.state.editedPlayer}/>
           <Route path="/past-games/" component={(props) => <GameHistoryList {...props} games={this.state.games} hello="hello" />} />
           <Route path="/past-tournaments/" component={TournamentHistoryList} />
           <Route path="/new-game/" component={SingleGame} />

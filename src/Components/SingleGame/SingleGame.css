@@ -16,19 +16,9 @@ form {
 
 input {
   margin: 1rem;
+  background: #EEEB;
 }
 
 .radio {
   margin: -1rem;
-}
-
-#submit {
-  -webkit-appearance: button;
-  width: 50%;
-  height: 3rem;
-  font-size: 14pt;
-  border-radius: 10px;
-  box-shadow: 4px 4px 4px #777;
-  border: 1px outset #EEE;
-  background-color: #EEE;
 }
