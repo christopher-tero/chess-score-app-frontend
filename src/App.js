@@ -18,6 +18,7 @@ export default class App extends Component {
       players:undefined,
       tournaments: undefined,
       games: [{id: 1, date: "1-1-11"}, {id: 2, date: "1-2-11"}],
+      editPlayerView: false,
       editedPlayer: {
         player_name: "",
         rating: "",
@@ -53,6 +54,10 @@ export default class App extends Component {
       .then(this.fetchData)
   }
 
+  setEditState = () => {
+    this.setState({ editPlayerView: !this.state.editPlayerView })
+  }
+
   editPlayer = (editPlayer) => {
     const id = this.state.editedPlayer.id
     fetch(url + `players/${id}`, {
@@ -68,7 +73,7 @@ export default class App extends Component {
 
   setEditedPlayer = (player) => {
     this.setState({editedPlayer: player})
-    console.log(player)
+    // console.log(player)
   }
 
   deletePerson = (id) => {
@@ -96,6 +101,8 @@ export default class App extends Component {
               delete={this.deletePerson}
               addPerson={this.addPerson}
               editPlayer={this.editPlayer}
+              editView={this.state.editPlayerView}
+              setEditState={this.setEditState}
               setEditedPlayer={this.setEditedPlayer}
               editedPlayer={this.state.editedPlayer}
             />}

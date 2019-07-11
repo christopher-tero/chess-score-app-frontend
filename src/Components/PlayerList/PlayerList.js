@@ -4,8 +4,23 @@ import './PlayerList.css'
 
 export default class PlayerList extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      player_name: this.props.editedPlayer.player_name,
+      rating: this.props.editedPlayer.rating,
+      editView: this.props.editView,
+    }
+  }
+
   listPlayers = () => this.props.players.map((player) => {
-    return <Players key={player.id} id={player.id} name={player.player_name} rating={player.rating} onClick={() => this.handleDelete(player.id)} editClick={() => this.handleEdit(player.id)}/>
+    return <Players key={player.id}
+      id={player.id}
+      name={player.player_name}
+      rating={player.rating}
+      onClick={() => this.handleDelete(player.id)}
+      editClick={() => this.handleEdit(player.id)}
+    />
   })
 
   handleDelete = (id) => {
@@ -13,12 +28,10 @@ export default class PlayerList extends Component {
   }
 
   handleEdit = (id) => {
+    this.props.setEditState()
     const player = this.props.players.find(player => player.id == id)
     this.props.setEditedPlayer(player)
-    // this.editPlayerBool = true
-    // this.editName = name
-    // this.editRating = rating
-    // console.log(this.editName)
+    // console.log(this.state)
   }
 
   addPlayer = (event) => {
@@ -33,10 +46,17 @@ export default class PlayerList extends Component {
   editPlayer = (event) => {
     event.preventDefault(event)
     const editPlayer = {
-      player_name: event.target.playerName.value,
-      rating: event.target.playerRating.value
+      player_name: this.state.player_name,
+      rating: this.state.rating,
     }
     this.props.editPlayer(editPlayer)
+    this.props.setEditState()
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   render(){
@@ -55,24 +75,30 @@ export default class PlayerList extends Component {
           <input type="text" placeholder="Player Rating" name="playerRating" required />
           <input type="submit" />
         </form>
-        <form id="edit-player" onSubmit={this.editPlayer}>
-            <h5>Edit Player</h5>
-            <input
-              onChange={this.updateEditedPerson}
-              type="text"
-              placeholder={this.props.editedPlayer.player_name}
-              name="playerName"
-              required
-            />
-            <input
-              onChange={this.updateEditedPerson}
-              type="text"
-              placeholder={this.props.editedPlayer.rating}
-              name="playerRating"
-              required
-            />
-            <input type="submit" />
-        </form>
+        { this.state.editView
+          ?
+            <form id="edit-player" onSubmit={this.editPlayer}>
+              <h5>Edit Player</h5>
+              <input
+                type="text"
+                onChange={(event) => this.handleChange(event)}
+                value={this.state.player_name}
+                placeholder={this.props.editedPlayer.player_name}
+                name="player_name"
+                required
+              />
+              <input
+                type="text"
+                onChange={(event) => this.handleChange(event)}
+                value={this.state.rating}
+                placeholder={this.props.editedPlayer.rating}
+                name="rating"
+                required
+              />
+              <input type="submit" />
+            </form>
+          : ""
+        }
       </div>
     )
   }
