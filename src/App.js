@@ -18,7 +18,10 @@ export default class App extends Component {
       players:undefined,
       tournaments: undefined,
       games: [{id: 1, date: "1-1-11"}, {id: 2, date: "1-2-11"}],
-      editedPlayer: {},
+      editedPlayer: {
+        player_name: "",
+        rating: "",
+      },
     }
   }
 
@@ -50,8 +53,9 @@ export default class App extends Component {
       .then(this.fetchData)
   }
 
-  editPerson = (editPlayer, id) => {
-    fetch(url + "players/" + id, {
+  editPlayer = (editPlayer) => {
+    const id = this.state.editedPlayer.id
+    fetch(url + `players/${id}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
@@ -63,7 +67,7 @@ export default class App extends Component {
   }
 
   setEditedPlayer = (player) => {
-    this.state.editedPlayer = player
+    this.setState({editedPlayer: player})
     console.log(player)
   }
 
@@ -87,7 +91,15 @@ export default class App extends Component {
         </nav>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Route path="/players/" component={(props) => <PlayerList {...props} players={this.state.players} delete={this.deletePerson} addPerson={this.addPerson} setEditedPlayer={this.setEditedPlayer}/>} editedPlayer={this.state.editedPlayer}/>
+          <Route path="/players/" component={(props) => <PlayerList {...props}
+              players={this.state.players}
+              delete={this.deletePerson}
+              addPerson={this.addPerson}
+              editPlayer={this.editPlayer}
+              setEditedPlayer={this.setEditedPlayer}
+              editedPlayer={this.state.editedPlayer}
+            />}
+          />
           <Route path="/past-games/" component={(props) => <GameHistoryList {...props} games={this.state.games} hello="hello" />} />
           <Route path="/past-tournaments/" component={TournamentHistoryList} />
           <Route path="/new-game/" component={SingleGame} />

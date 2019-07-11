@@ -32,12 +32,11 @@ export default class PlayerList extends Component {
 
   editPlayer = (event) => {
     event.preventDefault(event)
-    const id = 1
     const editPlayer = {
       player_name: event.target.playerName.value,
       rating: event.target.playerRating.value
     }
-    this.props.editPerson(editPlayer, id)
+    this.props.editPlayer(editPlayer)
   }
 
   render(){
@@ -61,14 +60,14 @@ export default class PlayerList extends Component {
             <input
               onChange={this.updateEditedPerson}
               type="text"
-              placeholder={this.props.editedPlayer ? this.props.editedPlayer.player_name : ""}
+              placeholder={this.props.editedPlayer.player_name}
               name="playerName"
               required
             />
             <input
               onChange={this.updateEditedPerson}
               type="text"
-              placeholder={this.props.editedPlayer ? this.props.editedPlayer.rating : ""}
+              placeholder={this.props.editedPlayer.rating}
               name="playerRating"
               required
             />
