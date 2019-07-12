@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap');
 
 body {
-  background-image: url("https://images.unsplash.com/photo-1561323587-7464f7689886?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background: url("https://images.unsplash.com/photo-1561323587-7464f7689886?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
   background-size: cover;
   background-position: bottom;
   font-family: 'Roboto', sans-serif;
   margin: 0;
+}
+
+#layer {
+    background-color: #DDD2;
 }
 
 button:focus {

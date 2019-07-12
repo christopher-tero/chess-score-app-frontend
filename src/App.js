@@ -84,36 +84,38 @@ export default class App extends Component {
 
   render() {
     return (
-      <Router>
-        <nav className="header">
-          <h4 className="title"><span className="logo">ScoreIt!</span> Chess</h4>
-          <div className="nav-links">
-            <span><Link to="/">Home</Link></span>
-            <span><Link to="/players/">Players</Link></span>
-            <span><Link to="/past-games/">Past Games</Link></span>
-            <span><Link to="/past-tournaments/">Past Tournament</Link></span>
-          </div>
-        </nav>
-        <Switch>
-          <Route path="/" exact component={Main} />
-          <Route path="/players/" component={(props) => <PlayerList {...props}
-              players={this.state.players}
-              delete={this.deletePerson}
-              addPerson={this.addPerson}
-              editPlayer={this.editPlayer}
-              editView={this.state.editPlayerView}
-              setEditState={this.setEditState}
-              setEditedPlayer={this.setEditedPlayer}
-              editedPlayer={this.state.editedPlayer}
-            />}
-          />
-          <Route path="/past-games/" component={(props) => <GameHistoryList {...props} games={this.state.games} hello="hello" />} />
-          <Route path="/past-tournaments/" component={TournamentHistoryList} />
-          <Route path="/new-game/" component={SingleGame} />
-          <Route path="/new-tournament/" component={NewTournamentForm} />
-        </Switch>
-        <Footer />
-      </Router>
+      <div id="layer">
+        <Router>
+          <nav className="header">
+            <h4 className="title"><span className="logo">ScoreIt!</span> Chess</h4>
+            <div className="nav-links">
+              <span><Link to="/">Home</Link></span>
+              <span><Link to="/players/">Players</Link></span>
+              <span><Link to="/past-games/">Past Games</Link></span>
+              <span><Link to="/past-tournaments/">Past Tournament</Link></span>
+            </div>
+          </nav>
+          <Switch>
+            <Route path="/" exact component={Main} />
+            <Route path="/players/" component={(props) => <PlayerList {...props}
+                players={this.state.players}
+                delete={this.deletePerson}
+                addPerson={this.addPerson}
+                editPlayer={this.editPlayer}
+                editView={this.state.editPlayerView}
+                setEditState={this.setEditState}
+                setEditedPlayer={this.setEditedPlayer}
+                editedPlayer={this.state.editedPlayer}
+              />}
+            />
+            <Route path="/past-games/" component={(props) => <GameHistoryList {...props} games={this.state.games} hello="hello" />} />
+            <Route path="/past-tournaments/" component={TournamentHistoryList} />
+            <Route path="/new-game/" component={SingleGame} />
+            <Route path="/new-tournament/" component={NewTournamentForm} />
+          </Switch>
+          <Footer />
+        </Router>
+      </div>
     );
   }
 }
