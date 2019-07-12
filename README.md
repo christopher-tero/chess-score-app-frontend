@@ -1,3 +1,24 @@
+# ScoreIt! Chess
+
+ScoreIt! Chess is a React front-end, Ruby-on-Rails back-end CRUD app that keeps track of chess players, games, and tournaments.
+
+## Installation and Usage
+
+No install necessary; visit this site at: https://scoreit-chess-app.herokuapp.com/
+
+## Contributing
+This project is not open to outside contribution at this time, although if you want to fork, clone, and download to tinker with it yourself feel free to do so.
+
+##Author
+Christopher Tero
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+-------------------------------------------------------
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -10,7 +31,7 @@ Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+You will also see any errors in the console.
 
 ### `npm test`
 
