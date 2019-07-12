@@ -59,7 +59,7 @@ input:focus {
   color: red;
   text-align: center;
   grid-column: 4/7;
-  grid-row-start: 4;
+  grid-row-start: 3;
 }
 
 .home {

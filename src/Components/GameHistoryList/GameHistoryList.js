@@ -17,10 +17,12 @@ export default class GameHistoryList extends Component {
             ? this.listGames()
             : ""
           }
+          <li>July 10, 2019: Garry Kasparov(W - 1) vs. Anatoly Karpov(B - 0)</li>
         </ul>
-        <p className="under-construction">This Page is Under Construction</p>
         <button className="home" onClick={() => this.props.history.push('/')}>Home</button>
       </div>
     )
   }
 }
+
+// <p className="under-construction">This Page is Under Construction</p>

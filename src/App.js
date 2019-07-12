@@ -108,8 +108,8 @@ export default class App extends Component {
                 editedPlayer={this.state.editedPlayer}
               />}
             />
-            <Route path="/past-games/" component={(props) => <GameHistoryList {...props} games={this.state.games} hello="hello" />} />
-            <Route path="/past-tournaments/" component={TournamentHistoryList} />
+            <Route path="/past-games/" component={(props) => <GameHistoryList {...props} games={this.state.games} />} />
+            <Route path="/past-tournaments/" component={(props) => <TournamentHistoryList {...props} tournaments={this.state.tournaments} />} />
             <Route path="/new-game/" component={SingleGame} />
             <Route path="/new-tournament/" component={NewTournamentForm} />
           </Switch>
